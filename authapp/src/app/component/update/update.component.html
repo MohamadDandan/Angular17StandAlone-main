@@ -1,0 +1,28 @@
+<form [formGroup]="_resetForm" (ngSubmit)="UpdatePassword()">
+    <mat-card>
+        <mat-card-header>
+            <h1>User Update password</h1>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input type="password" matInput formControlName="Password"/>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>OTP Text</mat-label>
+                <input type="password" matInput formControlName="OTPtext"/>
+            </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+           <div class="div-50">
+            <button type="submit" mat-raised-button color="primary">Update password</button>
+           </div>
+           <div class="div-50">
+            <a routerLink="/login" mat-raised-button color="accent">cancel</a>
+           </div>
+        </mat-card-actions>
+    </mat-card>
+
+
+</form>
+

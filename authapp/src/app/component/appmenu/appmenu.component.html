@@ -1,0 +1,50 @@
+@if(showMenu) {
+<div>
+    <mat-toolbar color="primary" class="mat-elevation-z8">
+        <button mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <span>Access Managment System</span> 
+        <span class="example-spacer"></span>
+        <span>{{loginUser}}</span>
+        <button mat-button [matMenuTriggerFor]="profile">
+            <mat-icon>arrow_drop_down</mat-icon>
+            <mat-menu #profile>
+                <button mat-menu-item>User Profile</button>
+                <button mat-menu-item routerLink="/resetpassword">Reset Password</button>
+                <button mat-menu-item routerLink="/login">LogOut</button>
+            </mat-menu>
+        </button>
+    </mat-toolbar>
+    <mat-drawer-container autosize>
+        <mat-drawer #drawer opened="true" mode="side" position="start">
+            <mat-nav-list>
+                <mat-list-item>
+                    <button mat-button routerLink="/">
+                        <mat-icon>home</mat-icon>
+                        home
+                    </button>
+                </mat-list-item>
+                @for(item of menuList;track item){
+                    <mat-list-item>
+                        <button mat-button routerLink="{{item.code}}">
+                            <mat-icon>home</mat-icon>
+                            {{item.name}}
+                        </button>
+                    </mat-list-item>
+                }
+            </mat-nav-list>
+        </mat-drawer>
+        <mat-drawer-content>
+            <div style="text-align: center;height:1000px;">
+                 <router-outlet></router-outlet>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+    
+</div>
+}@else{
+    <div style="text-align: center;height:1000px;">
+        <router-outlet></router-outlet>
+   </div>
+}
